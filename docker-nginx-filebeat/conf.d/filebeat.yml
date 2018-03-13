@@ -1,0 +1,21 @@
+output:
+  logstash:
+    enabled: true
+    hosts:
+      - elk.i-vectors.com:5044
+    timeout: 5
+    ssl:
+      certificate_authorities:
+      - /certs/logstash-beats.crt
+
+filebeat:
+  prospectors:
+    -
+      paths:
+        - /var/log/syslog
+        - /var/log/auth.log
+      document_type: syslog
+    -
+      paths:
+        - "/logs/*.log"
+      document_type: nginx-access
