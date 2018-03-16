@@ -5,6 +5,9 @@
 日志纪录服务，当然我们也可以使用Java，Golang等编译语言，不建议使用PHP等。另一个原因是我们依然有一系列nginx常规日志需要
 分析。
 
+### reportJs.js 引用
+    http://logs.i-vectors.com:8099/reportJs.min.js
+
 ### 1.Configure the log format
     首先我们在 nginx.conf 的http配置下增加自定义日志格式。
 ```json   
@@ -33,6 +36,13 @@ server {
 
     add_header Access-Control-Allow-Headers X-Requested-With;
     add_header Access-Control-Allow-Methods GET,POST,OPTIONS;
+
+    location /reportJs.js {
+        alias /usr/share/nginx/html/reportJs.min.js;
+    }
+    location /reportJs.min.js {
+        alias /usr/share/nginx/html/reportJs.min.js;
+    }
 
     location / {
         default_type application/json;
