@@ -16,6 +16,7 @@ services:
       - ./conf.d/log_serve.conf:/etc/nginx/conf.d/log_serve.conf
       - ./conf.d/filebeat.yml:/filebeat.yml
       - ./conf.d/certs:/certs
+      - ./html:/usr/share/nginx/html
     # command:
       # sh -c "nginx && bundle exec thin -p 3000"
     # networks:
